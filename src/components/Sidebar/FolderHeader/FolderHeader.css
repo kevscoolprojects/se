@@ -1,0 +1,11 @@
+.folderHeader{
+    width: 96%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+}
+.folderHeader span{
+    font-size: 19px;
+    margin-right: 10px;
+}
