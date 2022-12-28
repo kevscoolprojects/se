@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+    <file path="/Users/basithussain/Desktop/se/src/components/Sidebar/FolderHeader/FolderHeader.test.tsx">
+        <testCase name="renders learn react link" duration="14"/>
+    </file>
+</testExecutions>
