@@ -2,7 +2,7 @@ import TreeView from "@mui/lab/TreeView";
 import TreeItem from "@mui/lab/TreeItem";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import jsonData from './TreeData.json'
+import jsonData from "./TreeData.json";
 /*import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import TreeView from '@mui/lab/TreeView';
@@ -175,36 +175,38 @@ import React from "react";
 import Tree from "./Tree";
 import { treeData } from "./TreeBody";
 
-const jsTreeData=JSON.parse(JSON.stringify(treeData));
-const nodesToDelete=[];
-const recursiveRelationship = (Relationships:any,rest:any) => {
-  
-  if(Relationships && Relationships.length > 0){
-    const children=Relationships.map((node:any)=>{
-      const childNode=jsTreeData.find((item:any)=>item.AssetId === node.TargetAssetId);
-      
-      if (childNode) nodesToDelete.push(node.TargetAssetId);
-      return childNode;
-    })
-    return {...rest,children};
-  }
- // recursiveRelationship(Relationships,rest)
+const jsTreeData = JSON.parse(JSON.stringify(treeData));
+const nodesToDelete = [];
+const recursiveRelationship = (Relationships: any, rest: any) => {
+  if (Relationships && Relationships.length > 0) {
+    const children = Relationships.map((node: any) => {
+      const childNode = jsTreeData.find(
+        (item: any) => item.AssetId === node.TargetAssetId,
+      );
 
-}
-const organizedTreeData = jsTreeData.map((treeNode: any) => {
-  const {Relationships,...rest} = treeNode;
-  //recursiveRelationship(Relationships,rest)
-  
-  if(Relationships && Relationships.length > 0){
-    const children=Relationships.map((node:any)=>{
-      const childNode=jsTreeData.find((item:any)=>item.AssetId === node.TargetAssetId);
-      
       if (childNode) nodesToDelete.push(node.TargetAssetId);
       return childNode;
-    })
-    return {...rest,children};
+    });
+    return { ...rest, children };
   }
-  return {...rest};
+  // recursiveRelationship(Relationships,rest)
+};
+const organizedTreeData = jsTreeData.map((treeNode: any) => {
+  const { Relationships, ...rest } = treeNode;
+  //recursiveRelationship(Relationships,rest)
+
+  if (Relationships && Relationships.length > 0) {
+    const children = Relationships.map((node: any) => {
+      const childNode = jsTreeData.find(
+        (item: any) => item.AssetId === node.TargetAssetId,
+      );
+
+      if (childNode) nodesToDelete.push(node.TargetAssetId);
+      return childNode;
+    });
+    return { ...rest, children };
+  }
+  return { ...rest };
   // debugger;
 });
 // debugger;
@@ -298,82 +300,70 @@ const organizedTreeData = jsTreeData.map((treeNode: any) => {
 //   );
 // };
 
-
 const TreeList = () => {
   const ModifiedTreeItem = (item: any) => {
-		if (item.Relationships[0].Relation === "contains") {
-			const some: any = jsonData.find(
-				(s) => s.AssetId === item.Relationships[0].TargetAssetId,
-			);
-			console.log("ran here: ", item);
+    if (item.Relationships[0].Relation === "contains") {
+      const some: any = jsonData.find(
+        (s) => s.AssetId === item.Relationships[0].TargetAssetId,
+      );
+      console.log("ran here: ", item);
 
-			return (
-				<TreeItem label={item.AssetName} nodeId={item.AssetId}>
-					{some?.Relationships[0].Relation === "contains" ? (
-						ModifiedTreeItem(some)
-					) : (
-						<TreeItem
-							nodeId={item.AssetId}
-							label={item.AssetName}
-						/>
-					)}
-				</TreeItem>
-			);
-		} else {
-			return (
-				<TreeItem
-					label={item.AssetName}
-					nodeId={item.AssetId}
-				/>
-			);
-		}
-	};
-	return (
-		<TreeView
-			aria-label="multi-select"
-			defaultCollapseIcon={<ExpandMoreIcon />}
-			defaultExpandIcon={<ChevronRightIcon />}
-			multiSelect
-			sx={{ height: 216, flexGrow: 1, maxWidth: 500, overflowY: "auto" }}>
-			{jsonData.map((item: any) => {
-				const relations: any[] = item.Relationships;
-				const relationData: any[] = [];
+      return (
+        <TreeItem label={item.AssetName} nodeId={item.AssetId}>
+          {some?.Relationships[0].Relation === "contains" ? (
+            ModifiedTreeItem(some)
+          ) : (
+            <TreeItem nodeId={item.AssetId} label={item.AssetName} />
+          )}
+        </TreeItem>
+      );
+    } else {
+      return <TreeItem label={item.AssetName} nodeId={item.AssetId} />;
+    }
+  };
+  return (
+    <TreeView
+      aria-label="multi-select"
+      defaultCollapseIcon={<ExpandMoreIcon />}
+      defaultExpandIcon={<ChevronRightIcon />}
+      multiSelect
+      sx={{ height: 216, flexGrow: 1, maxWidth: 500, overflowY: "auto" }}
+    >
+      {jsonData.map((item: any) => {
+        const relations: any[] = item.Relationships;
+        const relationData: any[] = [];
 
-				for (let i = 0; i < relations.length; i++) {
-					if (relations[i].Relation === "contains") {
-						const found = jsonData.find(
-							(s) => s.AssetId === relations[i].TargetAssetId,
-						);
-						// console.log(
-						// 	"something is here: ",
-						// 	jsonData.find(
-						// 		(s) => s.AssetId === relations[i].TargetAssetId,
-						// 	),
-						// );
-						relationData.push(found);
-					} else {
-						// console.log("i don't know");
-					}
-				}
+        for (let i = 0; i < relations.length; i++) {
+          if (relations[i].Relation === "contains") {
+            const found = jsonData.find(
+              (s) => s.AssetId === relations[i].TargetAssetId,
+            );
+            // console.log(
+            // 	"something is here: ",
+            // 	jsonData.find(
+            // 		(s) => s.AssetId === relations[i].TargetAssetId,
+            // 	),
+            // );
+            relationData.push(found);
+          } else {
+            // console.log("i don't know");
+          }
+        }
 
-				return item.Relationships[0].Relation === "contains" ? (
-					<TreeItem
-						label={item.AssetName}
-						nodeId={item.AssetId}>
-						{relationData.map((item) =>
-							item.Relationships[0].Relation === "contains" ? (
-								ModifiedTreeItem(item)
-							) : (
-								<TreeItem
-									label={item.AssetName}
-									nodeId={item.AssetId}
-								/>
-							),
-						)}
-					</TreeItem>
-				) : null;
-			})}
-		</TreeView>)
-}
+        return item.Relationships[0].Relation === "contains" ? (
+          <TreeItem label={item.AssetName} nodeId={item.AssetId}>
+            {relationData.map((item) =>
+              item.Relationships[0].Relation === "contains" ? (
+                ModifiedTreeItem(item)
+              ) : (
+                <TreeItem label={item.AssetName} nodeId={item.AssetId} />
+              ),
+            )}
+          </TreeItem>
+        ) : null;
+      })}
+    </TreeView>
+  );
+};
 
 export default TreeList;
