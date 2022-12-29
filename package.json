@@ -36,7 +36,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --silent --env=jsdom --coverage --testResultsProcessor jest-sonar-reporter",
+    "sonar": "node sonar-project.js",
     "eject": "react-scripts eject",
     "pretify": "npx prettier ./ -w",
     "pretify-check": "npx prettier ./ -c"
@@ -61,6 +62,13 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.14.191",
+    "jest-sonar-reporter": "^2.0.0",
+    "sonarqube-scanner": "^2.9.1"
+  },
+  "jestSonar": {
+    "reportPath": "reports",
+    "reportFile": "test-report.xml",
+    "indent": 4,
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.8.1"
