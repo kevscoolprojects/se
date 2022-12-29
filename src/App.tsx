@@ -1,3 +1,5 @@
+import React from "react";
+import FolderHeader from "./components/Sidebar/FolderHeader/FolderHeader";
 import Sidebar from "./components/Sidebar/Sidebar";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -20,6 +22,7 @@ function App() {
         <Grid container spacing={2}>
           <Grid item xs={3} sx={{ height: "100vh" }}>
             <Item>
+              {" "}
               <Sidebar />
             </Item>
           </Grid>

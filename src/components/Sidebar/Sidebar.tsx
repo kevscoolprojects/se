@@ -4,12 +4,12 @@ import FolderHeader from "./FolderHeader/FolderHeader";
 import MultiSelectTreeView from "./SidebarFolder/MultiSelectTreeView";
 const Sidebar = () => {
   return (
-    <>
+    <div style={{ height: "100vh" }}>
       <Header />
       <SidebarNav />
       <FolderHeader />
       <MultiSelectTreeView />
-    </>
+    </div>
   );
 };
 

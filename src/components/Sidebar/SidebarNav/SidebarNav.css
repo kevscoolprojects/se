@@ -10,6 +10,7 @@
   margin-left: 15px;
 }
 .nav-right {
+  display: flex;
   margin-right: 15px;
 }
 
