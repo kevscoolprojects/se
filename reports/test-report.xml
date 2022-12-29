@@ -1,19 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-    <file path="/Users/basithussain/Desktop/se/src/components/Sidebar/SidebarHeader/SidebarHeader.test.tsx">
-        <testCase name="renders System explorer" duration="19"/>
-    </file>
-    <file path="/Users/basithussain/Desktop/se/src/components/Sidebar/FolderHeader/FolderHeader.test.tsx">
-        <testCase name="renders Nestle Production Line" duration="23"/>
-    </file>
-    <file path="/Users/basithussain/Desktop/se/src/components/Sidebar/SidebarNav/SidebarNav.test.tsx">
-        <testCase name="Sidebar nav new folder icon displays a new Folder image" duration="15"/>
-    </file>
-    <file path="/Users/basithussain/Desktop/se/src/components/DashboardMain/MainHeader/MainHeader.test.tsx">
-        <testCase name="Sidebar nav setting icon displays a setting image" duration="43"/>
-        <testCase name="Button1Test should render a button with the name of Full View" duration="36"/>
-        <testCase name="Button2Test should render a button with the name of logical" duration="18"/>
-        <testCase name="Button3Test should render a button with the name of Topology" duration="11"/>
-        <testCase name="Button4Test should render a button with the name of Applications" duration="12"/>
-    </file>
 </testExecutions>
