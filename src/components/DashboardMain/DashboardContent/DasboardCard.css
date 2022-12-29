@@ -1,0 +1,28 @@
+.dashboardCard {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  /* max-width: 30%; */
+  height: 70vh;
+  margin: 20px;
+  min-width: 300px;
+}
+
+.cardHeader,
+.cardSubHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+  padding: 0 10px;
+}
+.cardSubHeader {
+  padding: 5px 10px;
+}
+.subHeaderUSer {
+  border: 1px solid #ccc;
+  padding: 2px 4px;
+  border-radius: 50px;
+}
+.cardContent {
+  padding: 0 10px;
+}
