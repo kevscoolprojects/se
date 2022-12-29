@@ -2,11 +2,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import "./SidebarFolder.css";
 
-const Tree = ({ data = [] }:any) => {
+const Tree = ({ data = [] }: any) => {
   return (
     <div className="d-tree">
       <ul className="d-flex d-tree-container flex-column">
-        {data.map((tree:any) => (
+        {data.map((tree: any) => (
           <TreeNode node={tree} />
         ))}
       </ul>
@@ -14,13 +14,13 @@ const Tree = ({ data = [] }:any) => {
   );
 };
 
-const TreeNode = ({ node }:any) => {
+const TreeNode = ({ node }: any) => {
   const [childVisible, setChildVisiblity] = useState(false);
 
-  const hasChild = node.Relationships && node.Relationships.length > 0  ? true : false;
+  const hasChild =
+    node.Relationships && node.Relationships.length > 0 ? true : false;
 
-  if(hasChild){
-    
+  if (hasChild) {
   }
   return (
     <li className="d-tree-node border-0">
