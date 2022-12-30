@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-    <file path="/media/umar/EDUCATION1/Development/Kevin/se/src/components/Sidebar/SidebarHeader/SidebarHeader.test.tsx">
-        <testCase name="renders System explorer" duration="42"/>
-    </file>
     <file path="/media/umar/EDUCATION1/Development/Kevin/se/src/components/Sidebar/FolderHeader/FolderHeader.test.tsx">
-        <testCase name="renders Nestle Production Line" duration="53"/>
-    </file>
-    <file path="/media/umar/EDUCATION1/Development/Kevin/se/src/components/Sidebar/SidebarNav/SidebarNav.test.tsx">
-        <testCase name="Sidebar nav new folder icon displays a new Folder image" duration="43"/>
-    </file>
-    <file path="/media/umar/EDUCATION1/Development/Kevin/se/src/App.test.tsx">
-        <testCase name="Renders App component" duration="251"/>
-        <testCase name="renders System explorer component in App" duration="73"/>
-        <testCase name="Renders Nestle Production Line component in App" duration="79"/>
+        <testCase name="renders Nestle Production Line" duration="43"/>
     </file>
     <file path="/media/umar/EDUCATION1/Development/Kevin/se/src/components/DashboardMain/MainHeader/MainHeader.test.tsx">
-        <testCase name="Sidebar nav setting icon displays a setting image" duration="79"/>
-        <testCase name="Button1Test should render a button with the name of Full View" duration="90"/>
-        <testCase name="Button2Test should render a button with the name of logical" duration="45"/>
-        <testCase name="Button3Test should render a button with the name of Topology" duration="41"/>
-        <testCase name="Button4Test should render a button with the name of Applications" duration="32"/>
+        <testCase name="Sidebar nav setting icon displays a setting image" duration="89"/>
+        <testCase name="Button1Test should render a button with the name of Full View" duration="93"/>
+        <testCase name="Button2Test should render a button with the name of logical" duration="52"/>
+        <testCase name="Button3Test should render a button with the name of Topology" duration="37"/>
+        <testCase name="Button4Test should render a button with the name of Applications" duration="33"/>
+    </file>
+    <file path="/media/umar/EDUCATION1/Development/Kevin/se/src/components/Sidebar/SidebarNav/SidebarNav.test.tsx">
+        <testCase name="Sidebar nav new folder icon displays a new Folder image" duration="48"/>
+    </file>
+    <file path="/media/umar/EDUCATION1/Development/Kevin/se/src/components/Sidebar/SidebarHeader/SidebarHeader.test.tsx">
+        <testCase name="renders System explorer" duration="19"/>
+    </file>
+    <file path="/media/umar/EDUCATION1/Development/Kevin/se/src/components/Sidebar/SidebarFolder/MultiSelectTreeView.test.tsx">
+        <testCase name="renders Nestle Production Line" duration="104"/>
+    </file>
+    <file path="/media/umar/EDUCATION1/Development/Kevin/se/src/App.test.tsx">
+        <testCase name="Renders App component" duration="256"/>
+        <testCase name="renders System explorer component in App" duration="82"/>
+        <testCase name="Renders Nestle Production Line component in App" duration="81"/>
     </file>
 </testExecutions>
