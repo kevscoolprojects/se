@@ -8,11 +8,8 @@ import Grid from "@mui/material/Grid";
 import DashboardMain from "./components/DashboardMain/DashboardMain";
 
 const Item = styled(Paper)(({ theme }) => ({
-  // backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  // ...theme.typography.body2,
   padding: theme.spacing(1),
   textAlign: "center",
-  // color: theme.palette.text.secondary,
 }));
 
 function App() {

@@ -1,19 +1,31 @@
 import React, { useState } from "react";
-import "./DasboardContent.css";
-import DasboardCard from "./DashboardCard";
+import DasboardCard from "./DashboardCard/DashboardCard";
+import { styled } from "@mui/system";
+
+const Dashboard = styled("div")({
+  width: "100%",
+  height: "80vh",
+  padding: "30px 0",
+});
+
+const Row = styled("div")({
+  display: "flex",
+  alignItems: "center",
+  flexWrap: "wrap",
+});
 
 const DasboardContent = () => {
   return (
-    <div className="dashboard">
-      <div className="row">
+    <Dashboard>
+      <Row>
         <div>
           <DasboardCard />
         </div>
         <div>
           <DasboardCard />
         </div>
-      </div>
-    </div>
+      </Row>
+    </Dashboard>
   );
 };
 

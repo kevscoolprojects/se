@@ -8,25 +8,6 @@ import jsonData from "./TreeData.json";
 type Props = {};
 
 const MultiSelectTreeView = (props: Props) => {
-  const CustomTreeItem = styled(TreeItem)({
-    WebkitTapHighlightColor: "blue",
-    // "&:hover, & .Mui-expanded , &.Mui-disabled,  &.Mui-selected.Mui-focused, &.Mui-selected:hover":
-    // 	{
-    // 		backgroundColor: "green",
-    // 		position: "relative",
-    // 		padding: "0",
-    // 	},
-
-    "&:hover": {
-      padding: "0",
-      background: "green",
-    },
-
-    "&": {
-      padding: "0",
-    },
-  });
-
   const isChild = (asset: any) => {
     const treeData: any = jsonData;
     for (let i = 0; i < treeData.length; i++) {
