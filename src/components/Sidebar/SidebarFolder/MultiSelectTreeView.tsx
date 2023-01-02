@@ -1,6 +1,5 @@
 import TreeView from "@mui/lab/TreeView";
 import TreeItem from "@mui/lab/TreeItem";
-import { styled } from "@mui/material/styles";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import jsonData from "./TreeData.json";
@@ -30,6 +29,7 @@ const MultiSelectTreeView = (props: Props) => {
         <TreeItem
           label={item.AssetName}
           nodeId={item.AssetId}
+          key={item.AssetId}
           sx={{ padding: "0" }}
         >
           {foundItem?.Relationships[0].Relation === "contains" ? (
@@ -68,11 +68,11 @@ const MultiSelectTreeView = (props: Props) => {
             }
           }
         }
-        // console.log('item main: ', item)
         return isChild(item) ? (
           <TreeItem
             label={item.AssetName}
             nodeId={item.AssetId}
+            key={item.AssetId}
             style={{
               padding: "5px 0",
               background: "#eeeeee",
@@ -86,6 +86,7 @@ const MultiSelectTreeView = (props: Props) => {
                 <TreeItem
                   label={assetItem.AssetName}
                   nodeId={assetItem.AssetId}
+                  key={assetItem.AssetId}
                 />
               ),
             )}

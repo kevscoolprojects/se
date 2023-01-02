@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import information_circle from "@se/icons/svg/information_circle.svg";
 import user_add from "@se/icons/svg/user_add.svg";
 import user_standard from "@se/icons/svg/user_standard.svg";
@@ -36,18 +36,37 @@ const CardContent = styled("div")({
   padding: "0 10px",
 });
 
-const DasboardCard = () => {
-  const isChild = (asset: any) => {
-    const treeData: any = jsonData;
-    for (let i = 0; i < treeData.length; i++) {
-      for (let j = 0; j < treeData[i].Relationships.length; j++) {
-        if (asset.AssetId === treeData[i].Relationships[j].TargetAssetId) {
-          return false;
+interface Object {
+  AssetId: string;
+  AssetType: string;
+  AssetName: string;
+  IPAddress?: string | null | any;
+  Relationships: Array<object>;
+}
+interface Props {
+  item: Object;
+}
+
+const DasboardCard = ({ item }: Props) => {
+  const [itemRelationData, setItemRelationData] = useState<Array<any>>([]);
+
+  useEffect(() => {
+    const relations: any[] = item.Relationships;
+    const relationData: any[] = [];
+
+    for (let i = 0; i < relations.length; i++) {
+      if (relations[i].Relation === "contains") {
+        const found = jsonData.find(
+          (s) => s.AssetId === relations[i].TargetAssetId,
+        );
+        if (found) {
+          relationData.push(found);
         }
       }
     }
-    return true;
-  };
+
+    setItemRelationData(relationData);
+  }, []);
 
   const ModifiedTreeItem = (item: any) => {
     if (item.Relationships[0].Relation === "contains") {
@@ -56,7 +75,11 @@ const DasboardCard = () => {
       );
 
       return (
-        <TreeItem label={item.AssetName} nodeId={item.AssetId}>
+        <TreeItem
+          label={item.AssetName}
+          nodeId={item.AssetId}
+          key={item.AssetId}
+        >
           {foundItem?.Relationships[0].Relation === "contains" ? (
             ModifiedTreeItem(foundItem)
           ) : (
@@ -69,7 +92,7 @@ const DasboardCard = () => {
   return (
     <Card>
       <Headers>
-        <h3>Bottling</h3>
+        <h3>{item.AssetName.split(" ")[0]}</h3>
         <div className="headerIcons">
           <img src={information_circle} width="26px" height="26px" />
           <MoreHorizIcon />
@@ -89,42 +112,26 @@ const DasboardCard = () => {
           multiSelect
           sx={{ height: 216, flexGrow: 1, width: "99%" }}
         >
-          {jsonData.map((item: any) => {
-            const relations: any[] = item.Relationships;
-            const relationData: any[] = [];
-
-            for (let i = 0; i < relations.length; i++) {
-              if (relations[i].Relation === "contains") {
-                const found = jsonData.find(
-                  (s) => s.AssetId === relations[i].TargetAssetId,
-                );
-                if (found) {
-                  relationData.push(found);
-                }
-              }
-            }
-            return isChild(item) ? (
-              <TreeItem
-                label={item.AssetName}
-                nodeId={item.AssetId}
-                style={{
-                  padding: "5px",
-                  marginBottom: "2px",
-                }}
-              >
-                {relationData.map((assetItem) =>
-                  assetItem.Relationships[0].Relation === "contains" ? (
-                    ModifiedTreeItem(assetItem)
-                  ) : (
-                    <TreeItem
-                      label={assetItem.AssetName}
-                      nodeId={assetItem.AssetId}
-                    />
-                  ),
-                )}
-              </TreeItem>
-            ) : null;
-          })}
+          <TreeItem
+            label={item.AssetName}
+            nodeId={item.AssetId}
+            style={{
+              padding: "5px",
+              marginBottom: "2px",
+            }}
+          >
+            {itemRelationData.map((assetItem) =>
+              assetItem.Relationships[0].Relation === "contains" ? (
+                ModifiedTreeItem(assetItem)
+              ) : (
+                <TreeItem
+                  label={assetItem.AssetName}
+                  nodeId={assetItem.AssetId}
+                  key={assetItem.AssetId}
+                />
+              ),
+            )}
+          </TreeItem>
         </TreeView>
       </CardContent>
     </Card>
