@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import DasboardCard from "./DashboardCard/DashboardCard";
 import { styled } from "@mui/system";
+import DasboardCard from "./DashboardCard/DashboardCard";
+import jsonData from "../../Sidebar/SidebarFolder/TreeData.json";
 
 const Dashboard = styled("div")({
   width: "100%",
@@ -15,15 +15,27 @@ const Row = styled("div")({
 });
 
 const DasboardContent = () => {
+  const isChild = (asset: any) => {
+    const treeData: any = jsonData;
+    for (let i = 0; i < treeData.length; i++) {
+      for (let j = 0; j < treeData[i].Relationships.length; j++) {
+        if (asset.AssetId === treeData[i].Relationships[j].TargetAssetId) {
+          return false;
+        }
+      }
+    }
+    return true;
+  };
   return (
     <Dashboard>
       <Row>
-        <div>
-          <DasboardCard />
-        </div>
-        <div>
-          <DasboardCard />
-        </div>
+        {jsonData.map((item) =>
+          isChild(item) ? (
+            <div key={item.AssetId}>
+              <DasboardCard item={item} />
+            </div>
+          ) : null,
+        )}
       </Row>
     </Dashboard>
   );
