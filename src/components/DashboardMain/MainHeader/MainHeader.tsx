@@ -1,17 +1,47 @@
 import React, { useState } from "react";
-import "./MainHeader.css";
-import new_folder from "@se/icons/svg/new_folder.svg";
-import action_download_stroke from "@se/icons/svg/action_download_stroke.svg";
 import action_settings2 from "@se/icons/svg/action_settings2.svg";
-import action_filter from "@se/icons/svg/action_filter.svg";
-import more from "@se/icons/svg/more.svg";
-import Button from "@mui/material/Button";
 import ToggleOffIcon from "@mui/icons-material/ToggleOff";
 import ToggleOnIcon from "@mui/icons-material/ToggleOn";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import { styled } from "@mui/system";
+
+const Header = styled("div")({
+  width: "100%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  border: "1px solid black",
+  backgroundColor: "rgb(250, 248, 248)",
+  padding: "5px 0px",
+});
+
+const HeaderLeft = styled("div")({
+  backgroundColor: "white",
+  marginLeft: "15px",
+  padding: "10px 15px",
+  borderRadius: "20px",
+  "-webkit-box-shadow": "0 0 10px #ccc",
+  boxShadow: "0 0 10px #ccc",
+});
+
+const HeaderRight = styled("div")({
+  display: "flex",
+  alignItems: "center",
+  marginRight: "15px",
+});
+
+const Toggle = styled("div")({
+  display: "flex",
+  alignItems: "center",
+  margin: "0 10px",
+});
+
+const CombinedStyledBox = styled("div")({
+  margin: "0 10px",
+});
 
 function valuetext(value: number) {
   return `${value}°C`;
@@ -37,8 +67,8 @@ const MainHeader = () => {
   };
 
   return (
-    <div className="mainHeader">
-      <div className="header-left">
+    <Header>
+      <HeaderLeft>
         <button
           style={styleHandler(activeView)}
           onClick={() => {
@@ -83,9 +113,9 @@ const MainHeader = () => {
         >
           Applications
         </button>
-      </div>
-      <div className="header-right">
-        <div className="toggle">
+      </HeaderLeft>
+      <HeaderRight>
+        <Toggle>
           {!toggle ? (
             <ToggleOffIcon
               fontSize="large"
@@ -95,11 +125,11 @@ const MainHeader = () => {
             <ToggleOnIcon fontSize="large" onClick={() => setToggle(!toggle)} />
           )}
           <span>Plant View</span>
-        </div>
-        <div className="dropdown">
+        </Toggle>
+        <CombinedStyledBox>
           <ArrowDropDownIcon fontSize="large" />
-        </div>
-        <div className="slider">
+        </CombinedStyledBox>
+        <CombinedStyledBox>
           <Box sx={{ width: 100 }}>
             <Slider
               aria-label="Small steps"
@@ -111,13 +141,13 @@ const MainHeader = () => {
               max={0.0000001}
             />
           </Box>
-        </div>
-        <div className="setting">
+        </CombinedStyledBox>
+        <CombinedStyledBox>
           <img src={action_settings2} width="26px" height="26px" />
           <MoreHorizIcon />
-        </div>
-      </div>
-    </div>
+        </CombinedStyledBox>
+      </HeaderRight>
+    </Header>
   );
 };
 

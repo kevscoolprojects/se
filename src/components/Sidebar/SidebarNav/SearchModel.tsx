@@ -1,12 +1,9 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-
 import TextField from "@mui/material/TextField";
 import Modal from "@mui/material/Modal";
 import action_search_stroke from "@se/icons/svg/action_search_stroke.svg";
-import "./SidebarNav.css";
 
 const style = {
   position: "absolute" as "absolute",
@@ -26,7 +23,7 @@ export default function SearchModal() {
   const handleClose = () => setOpen(false);
 
   return (
-    <div>
+    <>
       {/* <Button onClick={handleOpen}>Open modal</Button> */}
       <img
         className="search"
@@ -58,6 +55,6 @@ export default function SearchModal() {
           </Box>
         </Box>
       </Modal>
-    </div>
+    </>
   );
 }

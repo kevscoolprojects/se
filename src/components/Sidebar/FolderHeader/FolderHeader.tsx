@@ -1,13 +1,24 @@
-import "./FolderHeader.css";
-import hide_list_parameters from "@se/icons/svg/hide_list_parameters.svg";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import { styled } from "@mui/system";
+
+const Header = styled("div")({
+  width: "96%",
+  height: "50px",
+  display: "flex",
+  alignItems: "center",
+  margin: " 0 20px",
+});
+const Span = styled("span")({
+  fontSize: "19px",
+  marginRight: "10px",
+});
 
 const FolderHeader = () => {
   return (
-    <div className="folderHeader">
-      <span>Nestle production line</span>
+    <Header>
+      <Span>Nestle production line</Span>
       <MoreHorizIcon />
-    </div>
+    </Header>
   );
 };
 
